@@ -743,3 +743,4 @@ def checkService(request): # hamgiin ehend duudagdah request shalgah service
         respdata = []
         resp = sendResponse(request, 3002, respdata, action)
         return JsonResponse(resp)
+    
