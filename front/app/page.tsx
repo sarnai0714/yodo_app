@@ -6,7 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/components/ui/table';
-import { Search, Plus, ShoppingBasket, LocateIcon } from 'lucide-react';
+import { Search, Plus, ShoppingBasket, LocateIcon, LogIn, UserPlus } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import partners from '@/data/partners.json';
 import foods from '@/data/foods.json';
@@ -18,14 +18,12 @@ export default function Home() {
 
   const router = useRouter();
 
-  // Сагсанд хоол нэмэх функц
   const addToCart = (food) => {
     const existingCart = JSON.parse(localStorage.getItem('cart') || '[]');
     const updatedCart = [...existingCart, food];
     localStorage.setItem('cart', JSON.stringify(updatedCart));
-    setSelectedFood(null); // 🟢 Dialog автоматаар хаагдана
+    setSelectedFood(null);
   };
-  
 
   return (
     <div className="bg-pink-100 min-h-screen p-8">
@@ -40,6 +38,12 @@ export default function Home() {
           </div>
         </nav>
         <nav className="flex items-center gap-4">
+          <Button variant="outline" size="icon" onClick={() => router.push('/login')}>
+            <LogIn size={16} />
+          </Button>
+          <Button variant="outline" size="icon" onClick={() => router.push('/signup')}>
+            <UserPlus size={16} />
+          </Button>
           <Button variant="outline" size="icon">
             <LocateIcon size={16} />
           </Button>
