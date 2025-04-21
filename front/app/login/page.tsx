@@ -23,7 +23,7 @@ export default function LoginPage() {
     const data = await res.json();
     if (data.resultCode === 1002) {
       localStorage.setItem('user', JSON.stringify(data.data[0]));
-      router.push('/dashboard');
+      router.push('/');
     } else {
       alert('Login failed');
     }
